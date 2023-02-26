@@ -9,7 +9,9 @@
             {%>
         <div class="col">
             <div class="card h-100">
-                <img src="<%: art.ImagenUrl %>" class="card-img-top" alt="https://coffeesearch.guatemalancoffees.com//uploads/coverPhoto.png" width="200px" height="200px">
+                <div class="text-center">
+                    <img src="<%: art.ImagenUrl %>" class="img-fluid" alt="https://coffeesearch.guatemalancoffees.com//uploads/coverPhoto.png" width="200px" height="200px">
+                </div>
                 <div class="card-body">
                     <h5 class="card-title"><%: art.Nombre %></h5>
                     <p class="card-text"><%: art.Marca.Descripcion %></p>

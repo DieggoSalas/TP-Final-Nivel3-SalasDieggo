@@ -19,7 +19,6 @@
                 </div>--%>
             <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" />
             <a href="Default.aspx" class="btn btn-secundary">Cancelar</a>
-
         </div>
     </div>
 </asp:Content>

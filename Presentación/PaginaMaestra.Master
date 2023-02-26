@@ -12,6 +12,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
+    <form id="form1" runat="server">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" runat="server">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">DIEGGO.NET</a>
@@ -42,36 +43,100 @@
                     </div>
                     <div class="offcanvas-body" runat="server">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" runat="server">
-                           <%-- <%if (!(Datos.Seguridad.Validar(Session["Logueado"])))
-                              {%>
-                            <a href="Login.aspx" class="btn btn-primary">Iniciar sesión</a>
-                            <a href="Perfil.aspx" class="btn btn-success">Registrarse</a>
+                            <%if (!(Datos.Seguridad.Validar(Session["Logueado"])))
+                              {%>                                    
+                                    <button type="button" class="btn btn-primary mx-1" data-bs-toggle="modal" data-bs-target="#Modal1">Iniciar Sesión</button>
+                                    <a href="Perfil.aspx" class="btn btn-success mx-1" data-bs-toggle="modal" data-bs-target="#Modal2">Registrarse</a>
                             <%}
                               else
-                              {%>                            
-                                <asp:Button ID="btnSalir" runat="server" Text="Cerrar sesión" CssClass="btn btn-outline-secondary mb2" OnClick="btnSalir_Click" />                            
-                            <%}%>--%>
-                            <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%"
-                                runat="server" ImageUrl="#" />
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="ddlUsuario" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" runat="server">Usuario</a>
-                                <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="Perfil.aspx">Mi Perfil</a></li>
-                                    <li><asp:a class="dropdown-item" href="#">Otra acción</asp:a></li>
-                                    <li><a class="dropdown-item" href="#">Algo mas aquí</a></li>
-                                </ul>
-                            </li>
+                              {%>
+                                    <asp:Image ID="imgAvatar" Style="height: 40px; width: 40px; border-radius: 50%" runat="server" ImageUrl="#" />
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" id="ddlUsuario" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" runat="server">Usuario</a>
+                                        <ul class="dropdown-menu dropdown-menu-dark">
+                                            <li><a class="dropdown-item" href="Perfil.aspx">Mi Perfil</a></li>
+                                            <li><asp:Button ID="btnSalir" runat="server" Text="Cerrar sesión" CssClass="dropdown-item" OnClick="btnSalir_Click"/></li>
+                                        </ul>
+                                    </li>
+                            <%}%>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </nav>    
-    <%-- <form class="d-flex" role="search">
+    </nav>
+
+    <!-- Modal -->    
+    <div class="modal fade" id="Modal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Titulo1" aria-hidden="true" runat="server">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="text-center">
+                        <h1 class="modal-title fs-5" id="Titulo1">Iniciar Sesión</h1>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center border-0 rounded mx-5 px-3 bg-dark">
+                        <div class="px-0 pt-3 pb-3">
+                            <label for="lblCorreo" class="form-label text-white">Correo:</label>
+                            <asp:TextBox ID="txtCorreo" runat="server" TextMode="Email" Text="Ejemplo@gmail.com" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                        </div>
+                        <div class="px-0 pt-3 pb-3">
+                            <label for="lblContraseña" class="form-label text-white">Contraseña:</label>
+                            <asp:TextBox ID="txtContraseña" runat="server" TextMode="Password" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                        </div>
+                        <div class="px-0 pt-3 pb-3">
+                            <label for="lblNuevo" class="form-label text-white">¿No tienes una cuenta?</label>
+                            <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#Modal2">Registrarse</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->    
+    <div class="modal fade" id="Modal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Titulo2" aria-hidden="true" runat="server">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="text-center">
+                        <h1 class="modal-title fs-5" id="Titulo2">Crear Cuenta</h1>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row justify-content-center border-0 rounded mx-5 px-3 bg-dark">
+                        <div class="px-0 pt-3 pb-3">
+                            <label for="lblNombre" class="form-label text-white">Nombre:</label>
+                            <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                        </div>
+                        <div class="px-0 pt-3 pb-3">
+                            <label for="lblCorreo1" class="form-label text-white">Correo:</label>
+                            <asp:TextBox ID="txtCorreoNuevo" runat="server" TextMode="Email" Text="Ejemplo@gmail.com" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                        </div>
+                        <div class="px-0 pt-3 pb-3">
+                            <label for="lblContraseña1" class="form-label text-white">Contraseña:</label>
+                            <asp:TextBox ID="txtContraNueva" runat="server" TextMode="Password" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <%--<button type="button" class="btn btn-secondary" data-bs-toggle="modal" href="#Modal1">Volver</button>--%>
+                    <asp:Button ID="btnRegistrar" runat="server" Text="Registrarse" CssClass="btn btn-success" data-bs-toggle="modal" href="#Modal1" OnClick="btnRegistrar_Click" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <%--<form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>--%>
-    <form id="form1" runat="server">
+    </form>--%>
+    
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>

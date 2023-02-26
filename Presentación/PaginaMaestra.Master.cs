@@ -23,7 +23,7 @@ namespace Presentación
             if (Seguridad.Validar(Session["Logueado"]))
             {
                 imgAvatar.ImageUrl = "~/Images/Perfil-" + ((Usuario)Session["Logueado"]).Id;
-                ddlUsuario.InnerText = ((Usuario)Session["Logueado"]).nombre;
+                ddlUsuario.InnerText = ((Usuario)Session["Logueado"]).nombre;                
             }
             else
                 imgAvatar.ImageUrl = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
@@ -32,6 +32,31 @@ namespace Presentación
         {
             Session.Clear();
             Response.Redirect("Default.aspx", false);
+        }
+
+        protected void btnIngresar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UsuarioDatos datos = new UsuarioDatos();
+                Usuario usuario = new Usuario();
+                usuario.email = txtCorreo.Text;
+                usuario.pass = txtContraseña.Text;
+                datos.loguear(usuario);
+                Session.Add("Logueado", usuario);
+                Response.Redirect("Default.aspx", false);
+
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.aspx", false);
+            }
+        }
+
+        protected void btnRegistrar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
