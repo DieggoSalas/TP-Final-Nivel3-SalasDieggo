@@ -18,8 +18,6 @@ namespace Datos
                 datos.SetearParametros("@email", nuevo.email);
                 datos.SetearParametros("@pass", nuevo.pass);
                 datos.SetearParametros("@nombre", nuevo.nombre);
-                datos.SetearParametros("@apellido", nuevo.apellido);
-                datos.SetearParametros("@img", nuevo.urlImagenPerfil);
                 return datos.EjecutarScaler();
             }
             catch (Exception ex)
@@ -72,7 +70,8 @@ namespace Datos
                 datos.SetearParametros("@pass", usuario.pass);
                 datos.SetearParametros("@nombre", usuario.nombre);
                 datos.SetearParametros("@apellido", usuario.apellido);
-                datos.SetearParametros("@img", usuario.urlImagenPerfil);
+                datos.SetearParametros("@admin", usuario.admin);
+                datos.SetearParametros("@img", (object)usuario.urlImagenPerfil ?? DBNull.Value);
                 datos.EjecutarAccion();
             }
             catch (Exception ex)

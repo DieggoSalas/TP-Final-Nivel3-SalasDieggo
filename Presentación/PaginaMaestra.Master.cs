@@ -13,25 +13,39 @@ namespace Presentación
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(Page is Home || Page is Login || Page is Perfil || Page is Error))
+            imgAvatar.ImageUrl = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
+            if (!(Page is Home || Page is Perfil || Page is Error))
             {
                 if (!(Seguridad.Validar(Session["Logueado"])))
                 {
-                    Response.Redirect("Login.aspx", false);
+                    Response.Redirect("Default.aspx", false);
                 }
             }
-            if (Seguridad.Validar(Session["Logueado"]))
+            else if(Seguridad.Validar(Session["Logueado"]))
             {
-                imgAvatar.ImageUrl = "~/Images/Perfil-" + ((Usuario)Session["Logueado"]).Id;
+                if (string.IsNullOrEmpty(((Usuario)Session["Logueado"]).urlImagenPerfil))
+                    imgAvatar.ImageUrl = "~/Images/Perfil-" + ((Usuario)Session["Logueado"]).Id;
                 ddlUsuario.InnerText = ((Usuario)Session["Logueado"]).nombre;                
             }
-            else
-                imgAvatar.ImageUrl = "https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png";
         }
-        protected void btnSalir_Click(object sender, EventArgs e)
+        protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            Session.Clear();
-            Response.Redirect("Default.aspx", false);
+            try
+            {
+                UsuarioDatos datos = new UsuarioDatos();
+                Usuario usuario = new Usuario();
+                usuario.nombre = txtNombreNuevo.Text;
+                usuario.email = txtCorreoNuevo.Text;
+                usuario.pass = txtContraNueva.Text;
+                usuario.Id = datos.registrar(usuario);
+                Session.Add("Logueado", usuario);
+                Response.Redirect("Default.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex.ToString());
+                Response.Redirect("Error.apsx", false);
+            }
         }
 
         protected void btnIngresar_Click(object sender, EventArgs e)
@@ -45,7 +59,6 @@ namespace Presentación
                 datos.loguear(usuario);
                 Session.Add("Logueado", usuario);
                 Response.Redirect("Default.aspx", false);
-
             }
             catch (Exception ex)
             {
@@ -54,9 +67,10 @@ namespace Presentación
             }
         }
 
-        protected void btnRegistrar_Click(object sender, EventArgs e)
+        protected void btnSalir_Click(object sender, EventArgs e)
         {
-
+            Session.Clear();
+            Response.Redirect("Default.aspx", false);
         }
     }
 }

@@ -1,0 +1,33 @@
+﻿.boton {
+    margin: 10px;
+}
+.lbl-switch{
+    display: inline-block;
+    width: 55px;
+    height: 30px;
+    background: #aaa;
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+}
+#chkAdmin:checked ~ .lbl-switch{
+    background: #61A0FF;
+}
+.lbl-switch::after {
+    position: absolute;
+    content: '';
+    width: 22px;
+    height: 22px;
+    background: #fff;
+    border-radius: 100px;
+    top: 4px;
+    left: 5px;
+    transition: 0.3s;
+}
+#chkAdmin:checked ~ .lbl-switch::after {
+    left: 28px;
+}
+#chkAdmin{
+    display: none;
+}
+

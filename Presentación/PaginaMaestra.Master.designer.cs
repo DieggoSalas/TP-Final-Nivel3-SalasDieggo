@@ -51,15 +51,6 @@ namespace Presentación
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ddlUsuario;
 
         /// <summary>
-        /// Control btnSalir.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSalir;
-
-        /// <summary>
         /// Control Modal1.
         /// </summary>
         /// <remarks>
@@ -105,13 +96,13 @@ namespace Presentación
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Modal2;
 
         /// <summary>
-        /// Control txtNombre.
+        /// Control txtNombreNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        protected global::System.Web.UI.WebControls.TextBox txtNombreNuevo;
 
         /// <summary>
         /// Control txtCorreoNuevo.
@@ -139,6 +130,15 @@ namespace Presentación
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistrar;
+
+        /// <summary>
+        /// Control btnSalir.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSalir;
 
         /// <summary>
         /// Control ContentPlaceHolder1.

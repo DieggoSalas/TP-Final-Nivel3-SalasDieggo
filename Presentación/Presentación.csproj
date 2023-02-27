@@ -83,14 +83,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\MisEstilos\Switch.css" />
     <Content Include="Error.aspx" />
     <Content Include="Favoritos.aspx" />
     <Content Include="Formulario.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
     <Content Include="ListaProducto.aspx" />
-    <Content Include="Login.aspx" />
-    <Content Include="Perfil.aspx" />
+    <Content Include="MiPerfil.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -138,13 +138,6 @@
     <Compile Include="ListaProducto.aspx.designer.cs">
       <DependentUpon>ListaProducto.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Login.aspx.designer.cs">
-      <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
     <Compile Include="PaginaMaestra.Master.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -152,12 +145,12 @@
     <Compile Include="PaginaMaestra.Master.designer.cs">
       <DependentUpon>PaginaMaestra.Master</DependentUpon>
     </Compile>
-    <Compile Include="Perfil.aspx.cs">
-      <DependentUpon>Perfil.aspx</DependentUpon>
+    <Compile Include="MiPerfil.aspx.cs">
+      <DependentUpon>MiPerfil.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Perfil.aspx.designer.cs">
-      <DependentUpon>Perfil.aspx</DependentUpon>
+    <Compile Include="MiPerfil.aspx.designer.cs">
+      <DependentUpon>MiPerfil.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -202,6 +195,9 @@
       <Project>{4ef14009-a4d5-43da-a945-f3682e66a2ba}</Project>
       <Name>Persistencia</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
