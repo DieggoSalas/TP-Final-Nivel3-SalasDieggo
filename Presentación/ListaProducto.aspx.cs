@@ -78,7 +78,7 @@ namespace Presentación
             try
             {
                 ArticuloDatos datos = new ArticuloDatos();
-                gvProductos.DataSource = datos.Filtar(ddlCampo.Text.ToString(), ddlCriterio.Text.ToString(), txtReferencia.Text);
+                gvProductos.DataSource = datos.Filtrar(ddlCampo.Text.ToString(), ddlCriterio.Text.ToString(), txtReferencia.Text);
                 gvProductos.DataBind();
             }
             catch (Exception ex)

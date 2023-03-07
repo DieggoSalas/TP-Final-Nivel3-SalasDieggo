@@ -1,0 +1,28 @@
+﻿/*.ModalInicio{
+    background-color: rgba(0,0,0,.8);
+    box-shadow: 0 0 30px rgba(0,0,0,.568);
+}*/
+#txtCorreo {
+    background-color: rgb(0,0,0,.1);
+    color:white
+}
+#txtContraseña {
+    background-color: rgb(0,0,0,.1);
+    color: white
+}
+#txtNombreNuevo {
+    background-color: rgb(0,0,0,.3);
+    color: white
+}
+#txtCorreoNuevo {
+    background-color: rgb(0,0,0,.3);
+    color: white
+}
+#txtContraNueva {
+    background-color: rgb(0,0,0,.3);
+    color: white
+}
+#Titulo2{
+    color: white
+}
+

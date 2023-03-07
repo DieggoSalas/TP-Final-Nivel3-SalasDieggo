@@ -6,13 +6,13 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Pagina Maestra</title>
-    <!--<link href="~/Content/MisEstilos/Switch.css" rel="stylesheet" />-->
+    <link href="~/Content/MisEstilos/Estilos.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body class="bg-secondary">
     <form id="form1" runat="server">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" runat="server">
         <div class="container-fluid">
@@ -74,7 +74,7 @@
     <!-- Modal "Inicio Sesión" -->    
     <div class="modal fade" id="Modal1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Titulo1" aria-hidden="true" runat="server">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content text-light" style="background-color: rgba(0,0,0,.8); box-shadow: 0 0 30px rgba(0,0,0,.568)">
                 <div class="modal-header">
                     <div class="text-center">
                         <h1 class="modal-title fs-5" id="Titulo1">Iniciar Sesión</h1>
@@ -82,14 +82,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row justify-content-center border-0 rounded mx-5 px-3 bg-dark">
+                    <div class="row justify-content-center border-0 rounded mx-5 px-3">
                         <div class="px-0 pt-3 pb-3">
                             <label for="lblCorreo" class="form-label text-white">Correo:</label>
-                            <asp:TextBox ID="txtCorreo" runat="server" TextMode="Email" Text="Ejemplo@gmail.com" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                            <asp:TextBox ID="txtCorreo" runat="server" TextMode="Email" Text="Ejemplo@gmail.com" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="px-0 pt-3 pb-3">
                             <label for="lblContraseña" class="form-label text-white">Contraseña:</label>
-                            <asp:TextBox ID="txtContraseña" runat="server" TextMode="Password" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                            <asp:TextBox ID="txtContraseña" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="px-0 pt-3 pb-3">
                             <label for="lblNuevo" class="form-label text-white">¿No tienes una cuenta?</label>
@@ -98,8 +98,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-primary" OnClick="btnIngresar_Click" />
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <asp:Button ID="btnIngresar" runat="server" Text="Ingresar" CssClass="btn btn-outline-primary" OnClick="btnIngresar_Click" />
                 </div>
             </div>
         </div>
@@ -107,7 +107,7 @@
     <!-- Modal "Registrarse"-->    
     <div class="modal fade" id="Modal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="Titulo2" aria-hidden="true" runat="server">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content" style="background-color:rgb(0,0,0,.8); box-shadow: 0 0 30px rgba(0,0,0,.568)">
                 <div class="modal-header">
                     <div class="text-center">
                         <h1 class="modal-title fs-5" id="Titulo2">Crear Cuenta</h1>
@@ -115,18 +115,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row justify-content-center border-0 rounded mx-5 px-3 bg-dark">
+                    <div class="row justify-content-center border-0 rounded mx-5 px-3">
                         <div class="px-0 pt-3 pb-3">
                             <label for="lblNombre" class="form-label text-white">Nombre:</label>
-                            <asp:TextBox ID="txtNombreNuevo" runat="server" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                            <asp:TextBox ID="txtNombreNuevo" runat="server" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="px-0 pt-3 pb-3">
                             <label for="lblCorreo1" class="form-label text-white">Correo:</label>
-                            <asp:TextBox ID="txtCorreoNuevo" runat="server" TextMode="Email" Text="Ejemplo@gmail.com" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                            <asp:TextBox ID="txtCorreoNuevo" runat="server" TextMode="Email" Text="Ejemplo@gmail.com" CssClass="form-control"></asp:TextBox>
                         </div>
                         <div class="px-0 pt-3 pb-3">
                             <label for="lblContraseña1" class="form-label text-white">Contraseña:</label>
-                            <asp:TextBox ID="txtContraNueva" runat="server" TextMode="Password" CssClass="form-control bg-secondary text-dark border-0"></asp:TextBox>
+                            <asp:TextBox ID="txtContraNueva" runat="server" TextMode="Password" CssClass="form-control"></asp:TextBox>
                         </div>
                     </div>
                 </div>

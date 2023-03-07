@@ -9,8 +9,10 @@ namespace Datos
 {
     public class ArticuloDatos
     {
-        private List<Articulo> lista = new List<Articulo>();
         private AccesoDatos datos = new AccesoDatos();
+        private List<Articulo> lista = new List<Articulo>();
+        private Articulo articulo;
+        private bool Todo = false;
         private bool opc = false;
         public List<Articulo> Listar()
         {
@@ -18,7 +20,8 @@ namespace Datos
             {
                 datos.ConsultarSP("TraerArticulos");
                 datos.LeerDatos();
-                RecorrerConsulta(opc);
+                Todo = true;
+                RecorrerConsulta();
 
                 return lista;
             }
@@ -36,13 +39,33 @@ namespace Datos
         {
             try
             {
-                datos.ConsultarSP("TraerArticulos2");
+                datos.ConsultarSP("TraerArticulo");
                 datos.SetearParametros("@Id", Id);
                 datos.LeerDatos();
                 opc = true;
-                RecorrerConsulta(opc);
+                RecorrerConsulta();
 
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+        }
+        public Articulo TraerArtDetalles(string Id)
+        {
+            try
+            {
+                datos.ConsultarSP("TraerArtDetalles");
+                datos.SetearParametros("@Id", Id);
+                datos.LeerDatos();
+                RecorrerConsulta();
+
+                return articulo;
             }
             catch (Exception ex)
             {
@@ -121,7 +144,7 @@ namespace Datos
             }
         }
 
-        public List<Articulo> Filtar(string campo, string criterio, string filtro)
+        public List<Articulo> Filtrar(string campo, string criterio, string filtro)
         {
             try
             {
@@ -174,7 +197,8 @@ namespace Datos
 
                 datos.Consultar(consulta);
                 datos.LeerDatos();
-                RecorrerConsulta(opc);
+                Todo = true;
+                RecorrerConsulta();
 
                 return lista;
             }
@@ -188,7 +212,7 @@ namespace Datos
             }
         }
 
-        private void RecorrerConsulta(bool opc)
+        private void RecorrerConsulta()
         {
             while (datos.Lector.Read())
             {
@@ -198,20 +222,35 @@ namespace Datos
                 aux.Nombre = (string)datos.Lector["Nombre"];
                 aux.Descripcion = (string)datos.Lector["Descripcion"];
                 aux.Marca = new Marca();
-                aux.Marca.Id = (int)datos.Lector["IdMarca"];
-                if (!opc)
-                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
                 aux.Categoria = new Categoria();
-                aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
-                if (!opc)
+                if (Todo)
+                {
+                    aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                    aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                    aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
                     aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                }
+                else
+                {
+                    if (opc)
+                    {
+                        aux.Marca.Id = (int)datos.Lector["IdMarca"];
+                        aux.Categoria.Id = (int)datos.Lector["IdCategoria"];
+                    }
+                    else
+                    {
+                        aux.Marca.Descripcion = (string)datos.Lector["Marca"];
+                        aux.Categoria.Descripcion = (string)datos.Lector["Categoria"];
+                    }
+                }
                 if (!(datos.Lector["ImagenUrl"] is DBNull))
                     aux.ImagenUrl = (string)datos.Lector["ImagenUrl"];
-                aux.Precio = datos.Lector.GetDecimal(!opc ? 9 : 7);
-
-                lista.Add(aux);
+                aux.Precio = datos.Lector.GetDecimal(Todo ? 9 : 7);
+                if (Todo || opc)
+                    lista.Add(aux);
+                else
+                    articulo = aux;
             }
         }
-
     }
 }
